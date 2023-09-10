@@ -3,7 +3,7 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
-API_KEY = os.getenv('OPENAI_API_KEY')
+API_KEY = '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'
 openai.api_key = API_KEY
 
 
@@ -24,11 +24,11 @@ openai.api_key = API_KEY
 # print(respone)
 
 def get_message(usermessage):
-    usermessage = usermessage
+    usermessage = (usermessage)
 
     response = openai.ChatCompletion.create(
         model = 'gpt-3.5-turbo',
-        messages = usermessage.text
+        messages = usermessage
     )
     response = response['choices'][0]['message']['content']
     return response
