@@ -16,7 +16,7 @@ tool = YouTubeSearchTool()
 
 openai.api_key = os.getenv('OPENAI_API_KEY')
 
-os.environ['SERPAPI_API_KEY'] = '7691bfed46fa11be59d73c819e2742fafa603f6446936ed91bace599e1f30d1b'
+os.environ['SERPAPI_API_KEY'] = 'API_KEY'
 tool_names = ["serpapi"]
 tools = load_tools(tool_names)
 youtube_url = ''
