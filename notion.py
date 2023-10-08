@@ -15,13 +15,11 @@ headers = {
     "Content-Type": "application/json",
     "Notion-Version": "2022-02-22"
 }
-# title = "Test Title"
+# title='noice'
+# youtube_url='notion'
+# blog_url= 'xyz'
 # description = "Test Description"
-def createPage(message):
-    message =  message.text
-    message = message.split(",")
-    title, youtube_url, blog_url = message[0], message[1], message[2]
-    print(title, youtube_url, blog_url)
+def createPage(title, youtube_url):
     createUrl = 'https://api.notion.com/v1/pages'
     newPageData = {
         "parent": { "database_id": dataset },
@@ -38,10 +36,6 @@ def createPage(message):
                         }
                     ]
                 },
-            "Blog URL": {
-                "url":blog_url
-            
-            },
             "Youtube URL": {
                     "url": youtube_url
                 },
@@ -54,3 +48,4 @@ def createPage(message):
         return True
     else:
         False
+# createPage('thsi very noice i like it very much', ['i dont about but i like it', "I'm Batman" ], 'Let make peace around me')

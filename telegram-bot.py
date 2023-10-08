@@ -1,8 +1,9 @@
 import os
 from dotenv import load_dotenv
+from chatbot import LLMPromptTemplate
 import telebot
-from chatbot import get_message
-from huggingface import usermessage
+# from chatbot import get_message
+# from huggingface import usermessage
 from notion import createPage
 load_dotenv()
 # Getting value form .env
@@ -10,7 +11,6 @@ BOT_TOKEN = os.getenv('BOT_TOKEN')
 
 
 bot = telebot.TeleBot(BOT_TOKEN)
-
 
 @bot.message_handler(commands=['start', 'hello'])
 def send_welcome(message):
@@ -31,8 +31,15 @@ def notion(message):
     bot.register_next_step_handler(sent_msg, AddNotion)
 
 def AddNotion(message):
-    bot.register_next_step_handler(message, createPage)
+    # message = message.text
 
+    message =  message.text
+    # message = message.split(",")
+    # title, youtube_url, blog_url = message[0], message[1], message[2]
+    title  = LLMPromptTemplate(message, 1)
+    youtube_url = LLMPromptTemplate(message, 2)
+    # bot.register_next_step_handler(title,youtube_url, blog_url,)
+    message = createPage(title,youtube_url)
 
 
 bot.infinity_polling()
