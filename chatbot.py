@@ -16,7 +16,7 @@ tool = YouTubeSearchTool()
 
 openai.api_key = os.getenv('OPENAI_API_KEY')
 
-os.environ['SERPAPI_API_KEY'] = 'API_KEY'
+os.environ['SERPAPI_API_KEY'] = os.getenv('SERPAPI_API_KEY')
 tool_names = ["serpapi"]
 tools = load_tools(tool_names)
 youtube_url = ''
@@ -46,3 +46,5 @@ def LLMPromptTemplate(Question,choice):
         agent = initialize_agent(tools, llm)
         return agent.run(Question)
 
+if __name__ == '__main__':
+    LLMPromptTemplate
